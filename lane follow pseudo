@@ -1,0 +1,40 @@
+//Lane following node 
+
+ 
+ 
+
+  //data array in 
+
+    //default output--proceed 
+
+    //yellow line region 
+
+      //do not cross 
+
+    //white line region 
+
+      //solid line recognition 
+
+        //do not cross 
+
+      //dashed line recognition 
+
+        //if obstacle is in the way 
+
+          //change lane 
+
+        //else if pothole 
+
+          //lane or pause? 
+
+        //else 
+
+          do not cross 
+
+    //blue taxi sign exception 
+
+      //if sign condition thrown 
+
+        //pause 
+
+  //output condition
