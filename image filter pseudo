@@ -1,0 +1,44 @@
+//Image filter node 
+
+ 
+ 
+
+  //image in 
+
+    //color detect 
+
+      //white 
+
+        //set line detect condition 
+
+      //yellow 
+
+        //set line detect condition 
+
+      //green 
+
+        //set all clear location 
+
+      //gray 
+
+        //set all clear location 
+
+      //blue 
+
+        //set taxi sign condition if in appropriate screen region 
+
+    //line detect -- Hough Line Transform 
+
+      //line detect code and output 
+
+    //object detect -- Hough Circles Transform 
+
+      //track all objects 
+
+        //if object detected in roadway set pause output 
+
+        //unless is pothole 
+
+          //then change lane? 
+
+  //output array 
