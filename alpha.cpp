@@ -26,7 +26,7 @@ int main(int, char**)
 
         cap>>image;                                                             //Get a new frame from camera
         medianBlur(image,image,5);                                              //Smooth out the image
-        //flip(image,image,-1);                                                 //Flip image upside down because camera is mounted upside down
+        flip(image,image,-1);                                                   //Flip image upside down because camera is mounted upside down--uncomment for final code
         bnw = image.clone();                                                    //Create a copy of original image
         Canny(image, dst, 90, 200, 3);                                          //Lowthresh originally set at 50
 
@@ -64,7 +64,7 @@ int main(int, char**)
 
         //flip(bnw,bnw,1);                                                      //Flip image horizontally since scan flips image horizontally--uncomment to debug ObstacleDetect
         medianBlur(bnw,bnw,5);                                                  //Smooth out the noise
-        //cvtColor(bnw, bnw, COLOR_BGR2GRAY);                                   //Convert from BGR color to grayscale--uncomment for final code
+        cvtColor(bnw, bnw, COLOR_BGR2GRAY);                                     //Convert from BGR color to grayscale--uncomment for final code
         //imshow("test",bnw);                                                   //Display B&W image--uncomment to debug ObstacleDetect
 
 
@@ -75,19 +75,25 @@ int main(int, char**)
 
         vector<Vec4i> lines;
         HoughLinesP(dst, lines, 1, CV_PI/180, 50, 50, 10 );
-        for( size_t i = 0; i < lines.size(); i++ )
-        {
-            Vec4i l = lines[i];
-            line( bnw, Point(l[0], l[1]), Point(l[2], l[3]), Scalar(0,0,255), 3, LINE_AA); //Draws red lines on image--comment out for actual code
-        }
+
+        //Line drawing function--draws red lines where lines detected in image--uncomment to debug LineDetect
+        //for( size_t i = 0; i < lines.size(); i++ )
+        //{
+        //    Vec4i l = lines[i];
+        //    line( bnw, Point(l[0], l[1]), Point(l[2], l[3]), Scalar(0,0,255), 3, LINE_AA); //Draws red lines on image--comment out for actual code
+        //}
 
         flip(bnw,bnw,1);                                                        //Flip image because it's backwards
-        imshow("Potato Face", bnw);                                             //Display final processed image--minus drawn lines in final code
+        //imshow("Black and White image", bnw);                                 //Display final processed image--minus drawn lines in final code--uncomment for debugging
 
         //#endif--uncomment for debugging purposes
+        cout << bnw;                                                            //return Black and White image
+        //cout << lines;                                                        //return Lines array
 
         if(waitKey(30) >= 0) break;                                             //30 ms delay
+
       }
+
     // the camera will be deinitialized automatically in VideoCapture destructor
-    return 0;
+    return 0; //return black and white image 'bnw' and lines vector array 'lines'
 }
